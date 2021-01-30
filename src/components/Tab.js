@@ -1,4 +1,4 @@
-function Header({changeTab}) {
+function Tab({changeTab}) {
   return (
     <div>
       <button onClick={() => {changeTab('rank')}}>RANK</button>
@@ -7,4 +7,4 @@ function Header({changeTab}) {
   );
 }
 
-export default Header;
+export default Tab;

@@ -1,4 +1,4 @@
-import {Header, Near, Rank } from './components'
+import {Tab, Near, Rank } from './components'
 
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div>
-      <Header changeTab={changeTab}/>
+      <Tab changeTab={changeTab}/>
       { tabName === 'near' ? <Near /> : <Rank />}
     </div>
   );
