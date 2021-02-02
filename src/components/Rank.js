@@ -14,9 +14,7 @@ function Rank() {
             <option value="">시·도 선택</option>
           </select>
         </div>
-        <div ></div>
-      </div>        <div>
-      </div>
+      </div>        
     </div>
   );
 }
