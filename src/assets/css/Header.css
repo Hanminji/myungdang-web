@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  height: 60px;
+  background-color :#FF363C;
+  overflow: hidden
+}
+
+.header-logo {
+  position: absolute; 
+  top: 18px;
+  left: 53px;
+  width: 48px;
+  height: 25px;
+  background: url('../img/myungdang_mainlogo@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-share {
+  position: absolute; 
+  right: 20px;
+  top: 20px;
+  width: 18px;
+  height: 20px;
+  background: url('../img/share-2@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

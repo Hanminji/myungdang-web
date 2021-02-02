@@ -1,0 +1,27 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  
+  width: 162px;
+  height: 38px; 
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 8px 11px #C7C7C729;
+  border-radius: 9px;
+  opacity: 1;
+
+  font: normal normal normal 13px/19px;
+  letter-spacing: -0.26px;
+  padding:  9px 15px 10px;
+  color: #333333;
+
+  background-image: url(../img/chevron-up@2x.png);
+  background-size: 8px;
+  background-position-x: 139px;
+  background-position-y: 17px;
+
+}
