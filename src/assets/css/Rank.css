@@ -15,26 +15,48 @@
 }
 
 .location-left {
-  position: fixed;
-  top: 128px;
+  position: absolute;
+  top: 16px;
   right: 50%;
   margin-right: 5px;
 }
 
 .location-right {
-  position: fixed;
-  top: 128px;
+  position: absolute;
+  top: 16px;
   left: 50%;
   margin-left: 5px;
 }
 
 .month {
-  position: inherit;
-  top: 182px;
+  position: relative;
+  width: 300px;
+  top: 70px;
   left: 20px;
+}
+
+
+.month-button {
   width: 60px;
   height: 35px;
+  margin-right: 15px;
+  background: #EBEBEB 0% 0% no-repeat padding-box;
+  border-radius: 26px;
+  opacity: 1;
+
+  font: normal normal normal 13px/19px;
+  letter-spacing: -0.26px;
+  color: #666666;
+}
+.month-button-active {
+  width: 60px;
+  height: 35px;
+  margin-right: 15px;
   background: #FF363C 0% 0% no-repeat padding-box;
   border-radius: 26px;
   opacity: 1;
+
+  font: normal normal normal 13px/19px;
+  letter-spacing: -0.26px;
+  color: #FFFFFF;
 }
