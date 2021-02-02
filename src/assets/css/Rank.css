@@ -20,7 +20,6 @@
   right: 50%;
   margin-right: 5px;
 }
-
 .location-right {
   position: absolute;
   top: 16px;
@@ -34,8 +33,6 @@
   top: 70px;
   left: 20px;
 }
-
-
 .month-button {
   width: 60px;
   height: 35px;
@@ -44,7 +41,9 @@
   border-radius: 26px;
   opacity: 1;
 
-  font: normal normal normal 13px/19px;
+  /* font: normal normal normal 13px/19px; */
+  font-size: 13px;
+  line-height: 19px;
   letter-spacing: -0.26px;
   color: #666666;
 }
@@ -56,7 +55,163 @@
   border-radius: 26px;
   opacity: 1;
 
-  font: normal normal normal 13px/19px;
+  /* font: normal normal normal 13px/19px; */
+  font-size: 13px;
+  line-height: 19px;
   letter-spacing: -0.26px;
   color: #FFFFFF;
+}
+
+.store {
+  position: relative;
+  margin: 0 auto;
+  left: 0px;
+  width: 375px;
+  height: 110px;
+  opacity: 1;
+  border-bottom: 1px #F8F8F8;
+  border-bottom-style: inset;
+}
+.rank-img-1 {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  width: 40px;
+  height: 31px;
+  background-image: url('../img/ranking1@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rank-img-2 {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  width: 40px;
+  height: 31px;
+  background-image: url('../img/ranking2@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rank-img-2 {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  width: 40px;
+  height: 31px;
+  background-image: url('../img/ranking2@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rank-img-3 {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  width: 40px;
+  height: 31px;
+  background-image: url('../img/ranking3@2x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rank-img {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  width: 40px;
+  height: 31px;
+}
+.rank-text {
+  position: absolute;
+  top: 25px;
+  left: 33px;
+  width: 12px;
+  height: 29px;
+  text-align: center;
+  /* font: normal normal bold 20px/29px; */
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0px;
+  color: #666666;
+  opacity: 1;
+}
+.store-name {
+  position: absolute;
+  top:20px;
+  left:71px;
+  width: 101px;
+  height: 24px;
+  text-align: left;
+  /* font: normal normal bold 16px/24px SpoqaHanSans; */
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  color: #333333;
+  opacity: 1;
+}
+.store-addr {
+  position: absolute;
+  top: 44px;
+  left: 71px;
+  width: 220px;
+  height: 18px;
+  text-align: left;
+  /* font: normal normal normal 12px/18px SpoqaHanSans; */
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+  color: #999999;
+  opacity: 1; 
+}
+.store-first {
+  position: absolute;
+  top: 70px;
+  left: 71px;
+  width: 55px;
+  height: 19px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.26px;
+  color: #4895FF;
+}
+.store-second {
+  position: absolute;
+  top: 70px;
+  left: 138px;
+  width: 55px;
+  height: 19px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.26px;
+  color: #333333;
+}
+.store-accumulate-money {
+  position: absolute;
+  top: 70px;
+  left: 205px;
+  width: 100px;
+  height: 19px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.26px;
+  color: #333333;
+}
+.store-more {
+  position: absolute;
+  top: 40px;
+  left: 325px;
+  width: 30px;
+  height: 30px;
+  background: transparent url('../img/place_more@2x.png') 0% 0% no-repeat padding-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
 }
