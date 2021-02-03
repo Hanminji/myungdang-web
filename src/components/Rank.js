@@ -60,7 +60,7 @@ function Rank() {
   const [focus, setFocus] = useState(month[0]);
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedStore, setStore] = useState({})
-  
+
   const openModal = (store) => {
     setIsOpen(true);
     setStore(store)
@@ -92,25 +92,27 @@ function Rank() {
         </div>
       </div>
       <div className="store-content">
-      {_dummy.map((store, index) => (
-        <div className="store" key={index}>
-          {store.RANK < 4 ? <div className={"rank-img-" + store.RANK} /> : <div className="rank-text">{store.RANK}</div>}
-          <div className="store-name">{store.STORE_NAME}</div>
-          <div className="store-addr">{store.STORE_ADDR}</div>
-          <div className="store-first">1등 &nbsp;
+        {_dummy.map((store, index) => (
+          <div className="store" key={index}>
+            {store.RANK < 4 ? <div className={"rank-img-" + store.RANK} /> : <div className="rank-text">{store.RANK}</div>}
+            <div className="store-name">{store.STORE_NAME}</div>
+            <div className="store-addr">{store.STORE_ADDR}
+              <div className="icon-copy" />
+            </div>
+            <div className="store-first">1등 &nbsp;
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
-          </div>
-          <div className="store-second">2등 &nbsp;
+            </div>
+            <div className="store-second">2등 &nbsp;
             <p style={{ 'fontWeightt': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
-          </div>
-          <div className="store-accumulate-money">누적 금액 &nbsp;
+            </div>
+            <div className="store-accumulate-money">누적 금액 &nbsp;
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.ACCUMULATED_MONEY}억</p>
-          </div>
-          <div className="store-modal-btn" onClick={() => openModal(store)} />
-        </div>))};
+            </div>
+            <div className="store-modal-btn" onClick={() => openModal(store)} />
+          </div>))};
 
-      <RankModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore}/>
-    </div>
+      <RankModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
+      </div>
     </div>
   )
 }
