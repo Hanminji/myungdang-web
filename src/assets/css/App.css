@@ -1,6 +1,6 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
-button {
+button, input, select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -8,11 +8,6 @@ button {
 }
 
 select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  
   width: 162px;
   height: 38px; 
   background: #FFFFFF 0% 0% no-repeat padding-box;

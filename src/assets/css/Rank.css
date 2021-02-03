@@ -40,8 +40,6 @@
   background: #EBEBEB 0% 0% no-repeat padding-box;
   border-radius: 26px;
   opacity: 1;
-
-  /* font: normal normal normal 13px/19px; */
   font-size: 13px;
   line-height: 19px;
   letter-spacing: -0.26px;
@@ -54,8 +52,6 @@
   background: #FF363C 0% 0% no-repeat padding-box;
   border-radius: 26px;
   opacity: 1;
-
-  /* font: normal normal normal 13px/19px; */
   font-size: 13px;
   line-height: 19px;
   letter-spacing: -0.26px;
@@ -130,7 +126,6 @@
   width: 12px;
   height: 29px;
   text-align: center;
-  /* font: normal normal bold 20px/29px; */
   font-weight: bold;
   font-size: 20px;
   line-height: 29px;
@@ -145,7 +140,6 @@
   width: 101px;
   height: 24px;
   text-align: left;
-  /* font: normal normal bold 16px/24px SpoqaHanSans; */
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
@@ -160,7 +154,6 @@
   width: 220px;
   height: 18px;
   text-align: left;
-  /* font: normal normal normal 12px/18px SpoqaHanSans; */
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.24px;
@@ -203,7 +196,7 @@
   letter-spacing: -0.26px;
   color: #333333;
 }
-.store-more {
+.store-modal-btn {
   position: absolute;
   top: 40px;
   left: 325px;
@@ -214,4 +207,14 @@
   background-repeat: no-repeat;
   background-position: center;
   opacity: 1;
+}
+
+.map {
+  width: 310px;
+  height: 280px;
+  background-color: #999999;
+}
+.store-info {
+  width: 310px;
+  height: 171px;
 }
