@@ -1,22 +1,24 @@
 import '../assets/css/Rank.css'
 import { useState } from 'react';
+import RankModal from './RankModal'
 
 function Rank() {
-
   const _dummy = [{
     RANK: 1,
     STORE_NAME: '개봉로또판매점',
     STORE_ADDR: '서울 구로구 개봉로 22길 66',
     RANK_FIRST_COUNT: 30,
     RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
   }, {
     RANK: 2,
     STORE_NAME: '나눔로또판매점',
     STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
     RANK_FIRST_COUNT: 30,
     RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
   },
   {
     RANK: 3,
@@ -24,7 +26,8 @@ function Rank() {
     STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
     RANK_FIRST_COUNT: 30,
     RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
   },
   {
     RANK: 4,
@@ -32,7 +35,8 @@ function Rank() {
     STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
     RANK_FIRST_COUNT: 30,
     RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
   },
   {
     RANK: 5,
@@ -40,10 +44,30 @@ function Rank() {
     STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
     RANK_FIRST_COUNT: 30,
     RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
+  },
+  {
+    RANK: 6,
+    STORE_NAME: '나눔로또판매점',
+    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
+    RANK_FIRST_COUNT: 30,
+    RANK_SECOND_COUNT: 39,
+    ACCUMULATED_MONEY: 30.4,
+    PHONE_NUM: '02-0000-0000'
   }]
   const month = ['전체', '3개월', '6개월', '1년'];
   const [focus, setFocus] = useState(month[0]);
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [selectedStore, setStore] = useState({})
+  
+  const openModal = (store) => {
+    setIsOpen(true);
+    setStore(store)
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="rank-top">
@@ -81,10 +105,13 @@ function Rank() {
           <div className="store-accumulate-money">누적 금액 &nbsp;
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.ACCUMULATED_MONEY}억</p>
           </div>
-          <div className="store-more" />
+          <div className="store-modal-btn" onClick={() => openModal(store)} />
         </div>))};
+
+      <RankModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore}/>
     </div>
   )
 }
+
 
 export default Rank;
