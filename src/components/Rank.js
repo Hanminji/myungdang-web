@@ -91,6 +91,7 @@ function Rank() {
           ))}
         </div>
       </div>
+      <div className="store-content">
       {_dummy.map((store, index) => (
         <div className="store" key={index}>
           {store.RANK < 4 ? <div className={"rank-img-" + store.RANK} /> : <div className="rank-text">{store.RANK}</div>}
@@ -109,6 +110,7 @@ function Rank() {
         </div>))};
 
       <RankModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore}/>
+    </div>
     </div>
   )
 }
