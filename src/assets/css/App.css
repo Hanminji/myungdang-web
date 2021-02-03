@@ -15,14 +15,13 @@ select {
   border-radius: 9px;
   opacity: 1;
 
-  font: normal normal normal 13px/19px;
+  font-size: 15px;
   letter-spacing: -0.26px;
   padding:  9px 15px 10px;
   color: #333333;
 
   background-image: url(../img/chevron-up@2x.png);
   background-size: 8px;
-  background-position-x: 139px;
+  background-position-x: 95%;
   background-position-y: 17px;
-
 }

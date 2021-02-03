@@ -65,7 +65,7 @@
 .store {
   position: relative;
   margin: 0 auto;
-  width: 375px;
+  width: 100%;
   height: 110px;
   opacity: 1;
   border-bottom: 1px #F8F8F8;
@@ -75,7 +75,8 @@
 .rank-img-1 {
   position: absolute;
   top: 24px;
-  left: 20px;
+  margin-left: 20px;
+  /* left: 20px; */
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking1@2x.png');
@@ -86,7 +87,7 @@
 .rank-img-2 {
   position: absolute;
   top: 24px;
-  left: 20px;
+  margin-left: 20px;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking2@2x.png');
@@ -97,7 +98,7 @@
 .rank-img-2 {
   position: absolute;
   top: 24px;
-  left: 20px;
+  margin-left: 20px;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking2@2x.png');
@@ -108,7 +109,7 @@
 .rank-img-3 {
   position: absolute;
   top: 24px;
-  left: 20px;
+  margin-left: 20px;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking3@2x.png');
@@ -119,14 +120,14 @@
 .rank-img {
   position: absolute;
   top: 24px;
-  left: 20px;
+  margin-left: 20px;
   width: 40px;
   height: 31px;
 }
 .rank-text {
   position: absolute;
   top: 25px;
-  left: 33px;
+  margin-left: 33px;
   width: 12px;
   height: 29px;
   text-align: center;
@@ -140,7 +141,7 @@
 .store-name {
   position: absolute;
   top:20px;
-  left:71px;
+  margin-left:71px;
   width: 101px;
   height: 24px;
   text-align: left;
@@ -202,8 +203,9 @@
 }
 .store-modal-btn {
   position: absolute;
+  right: 0;
+  margin-right: 20px;
   top: 40px;
-  left: 325px;
   width: 30px;
   height: 30px;
   background: transparent url('../img/place_more@2x.png') 0% 0% no-repeat padding-box;
