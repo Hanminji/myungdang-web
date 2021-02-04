@@ -23,7 +23,7 @@ const customStyles = {
 };
 
 function NaverMapAPIModal() {
-  const navermaps_modal = window.naver.maps;
+  const navermaps = window.naver.maps;
 
   return (
     <NaverMap
@@ -32,12 +32,12 @@ function NaverMapAPIModal() {
         width: '100%',
         height: '100%'
       }}
-      defaultCenter={{ lat: 37.551229, lng: 126.988205 }} // 지도 초기 위치
+      defaultCenter={{ lat: 37.56, lng: 126.988205 }} // 지도 초기 위치
       defaultZoom={14} // 지도 초기 확대 배율
     >
       <Marker
         key={1}
-        position={new navermaps_modal.LatLng(37.551229, 126.988205)}
+        position={new navermaps.LatLng(37.56, 126.988205)}
         animation={0}
         icon={{
           url: MarkerImg,
