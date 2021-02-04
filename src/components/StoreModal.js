@@ -1,6 +1,6 @@
 import Modal from 'react-modal'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
-import '../assets/css/RankModal.css'
+import '../assets/css/StoreModal.css'
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
 Modal.setAppElement('#root')
@@ -22,11 +22,12 @@ const customStyles = {
   }
 };
 
-function NaverMapAPI() {
-  const navermaps = window.naver.maps;
+function NaverMapAPIModal() {
+  const navermaps_modal = window.naver.maps;
 
   return (
     <NaverMap
+      id='modal-map'
       style={{
         width: '100%',
         height: '100%'
@@ -36,8 +37,8 @@ function NaverMapAPI() {
     >
         <Marker
         key={1}
-        position={new navermaps.LatLng(37.551229, 126.988205)}
-        animation={2}
+        position={new navermaps_modal.LatLng(37.551229, 126.988205)}
+        animation={0}
         icon={{
           url: MarkerImg,
           size:{width:55,height:55},
@@ -47,26 +48,25 @@ function NaverMapAPI() {
     </NaverMap>
   );
 }
-function RankModal({ closeModal, modalIsOpen, store }) {
+function StoreModal({ closeModal, modalIsOpen, store }) {
   return (
     <div>
       <Modal
+        id=''
         isOpen={modalIsOpen}
         onRequestClose={() => closeModal()}
         style={customStyles}
       >
-        <div className="map" id="map">
+        <div className="map" id="modal-map">
           <RenderAfterNavermapsLoaded
             ncpClientId={'fpfch34q29'}>
-            <NaverMapAPI />
+            <NaverMapAPIModal />
           </RenderAfterNavermapsLoaded>
         </div>
-        <div className="store-info">
+        <div className="store-layout1">
           <div className="modal-store-name">{store.STORE_NAME}</div>
           <div className="icon-location" />
-          <div className="modal-store-addr">{store.STORE_ADDR}
-            <div className="icon-copy" />
-          </div>
+          <div className="modal-store-addr">{store.STORE_ADDR}</div>
           <div className="icon-phone" />
           <div className="modal-store-phone">{store.PHONE_NUM}</div>
           <div className="icon-money" />
@@ -80,10 +80,14 @@ function RankModal({ closeModal, modalIsOpen, store }) {
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
           </div>
         </div>
+        <div className="store-layout2">
+          <div className="call-btn"><p className="btn-text">전화연결</p></div>
+          <div className="find-btn"><p className="btn-text">길찾기</p></div>
+        </div>
         <div className="modal-close-btn" onClick={() => closeModal()}/>
       </Modal>
     </div>
   );
 }
 
-export default RankModal;
+export default StoreModal;
