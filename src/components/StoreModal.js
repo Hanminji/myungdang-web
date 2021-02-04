@@ -52,7 +52,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
   return (
     <div>
       <Modal
-        id=''
+        id='modal-map'
         isOpen={modalIsOpen}
         onRequestClose={() => closeModal()}
         style={customStyles}
