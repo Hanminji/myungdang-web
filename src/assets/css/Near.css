@@ -11,14 +11,14 @@
   position:relative;
   display: inline-block;
   margin-top: 16px;
-  width: 85%;
+  width: 90%;
   height: 38px;
   background: #EBEBEB 0% 0% no-repeat padding-box;
   border-radius: 9px;
 }
 .input-container > input {
   width: 100%;
-  height: 100%;
+  height: 95%;
   text-align: left;
   font-size: 14px;
   line-height: 19px;
@@ -31,7 +31,7 @@ input#location {
   background-image: url('../img/search@2x.png');
   background-repeat: no-repeat;
   background-size: 12px;
-  background-position: 20px;
+  background-position: 19px 14px;
   text-indent: 40px;
 }
 
