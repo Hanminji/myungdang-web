@@ -5,9 +5,10 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
 import Store from './Store'
 import StoreModal from './StoreModal'
 
+import * as MAP from '../js/maps'
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
-import {_dummy} from '../constant/dummy'
+import { _dummy } from '../constant/dummy'
 
 function NaverMapAPI() {
   const navermaps = window.naver.maps;
@@ -35,25 +36,36 @@ function NaverMapAPI() {
     </NaverMap>
   );
 }
+
 function Near() {
   const tabs = ['rank', 'near'];
+
   const [selectedTab, setTab] = useState(tabs[0])
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedStore, setStore] = useState({})
+  const [query, setQuery] = useState('')
 
   const openModal = (store) => {
-    setIsOpen(true);
+    setIsOpen(true)
     setStore(store)
-  };
+  }
   const closeModal = () => {
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      MAP.getLatLong(query)
+    }
+  }
+  const handleChange = (e) => {
+    setQuery(e.target.value)
+  }
 
   return (
     <div>
       <div className="search-content">
         <div className="input-container">
-          <input id="location" placeholder="도로명, 지번 주소로 검색해주세요." />
+          <input onKeyDown={handleKeyDown} onChange={handleChange} id="location" placeholder="도로명, 지번 주소로 검색해주세요." />
         </div>
       </div>
       {!modalIsOpen ? <div className="near-content">
