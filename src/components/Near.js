@@ -1,9 +1,13 @@
 import '../assets/css/Near.css'
 import { useState } from 'react';
+import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
+
 import Store from './Store'
 import StoreModal from './StoreModal'
+
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
-import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
+
+import {_dummy} from '../constant/dummy'
 
 function NaverMapAPI() {
   const navermaps = window.naver.maps;
@@ -32,102 +36,6 @@ function NaverMapAPI() {
   );
 }
 function Near() {
-  const _dummy = [{
-    RANK: 1,
-    STORE_ID: 'ST0001',
-    STORE_NAME: '개봉로또판매점',
-    STORE_ADDR: '서울 구로구 개봉로 22길 66',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }, {
-    RANK: 2,
-    STORE_ID: 'ST0002',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  },
-  {
-    RANK: 3,
-    STORE_ID: 'ST0003',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  },
-  {
-    RANK: 4,
-    STORE_ID: 'ST0004',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  },
-  {
-    RANK: 5,
-    STORE_ID: 'ST0005',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  },
-  {
-    RANK: 6,
-    STORE_ID: 'ST0006',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }, {
-    RANK: 7,
-    STORE_ID: 'ST0007',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }, {
-    RANK: 8,
-    STORE_ID: 'ST0008',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }, {
-    RANK: 9,
-    STORE_ID: 'ST0009',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }, {
-    RANK: 10,
-    STORE_ID: 'ST0010',
-    STORE_NAME: '나눔로또판매점',
-    STORE_ADDR: '서울 구로구 경인로 35길 56 의당빌딩',
-    RANK_FIRST_COUNT: 30,
-    RANK_SECOND_COUNT: 39,
-    ACCUMULATED_MONEY: 30.4,
-    PHONE_NUM: '02-0000-0000'
-  }]
-
   const tabs = ['rank', 'near'];
   const [selectedTab, setTab] = useState(tabs[0])
   const [modalIsOpen, setIsOpen] = useState(false)
