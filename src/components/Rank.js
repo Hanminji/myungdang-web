@@ -64,7 +64,7 @@ function Rank() {
       </div>
       <div className="store-content">
         {rank.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
-        <div className="more-btn"></div>
+        {lastIndex > 0 ? <div className="more-btn" /> : <div />}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
     </div>
