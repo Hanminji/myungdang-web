@@ -22,7 +22,7 @@ const customStyles = {
   }
 };
 
-function NaverMapAPIModal() {
+function NaverMapAPIModal({lat, lng}) {
   const navermaps = window.naver.maps;
 
   return (
@@ -32,12 +32,12 @@ function NaverMapAPIModal() {
         width: '100%',
         height: '100%'
       }}
-      defaultCenter={{ lat: 37.56, lng: 126.988205 }} // 지도 초기 위치
+      defaultCenter={{ lat, lng }} // 지도 초기 위치
       defaultZoom={14} // 지도 초기 확대 배율
     >
       <Marker
         key={1}
-        position={new navermaps.LatLng(37.56, 126.988205)}
+        position={new navermaps.LatLng(lat, lng)}
         animation={0}
         icon={{
           url: MarkerImg,
@@ -59,7 +59,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
         <div className="map" id="modal-map">
           <RenderAfterNavermapsLoaded
             ncpClientId={'fpfch34q29'}>
-            <NaverMapAPIModal />
+            <NaverMapAPIModal lat={store.LATITUDE} lng={store.LONGITUDE} />
           </RenderAfterNavermapsLoaded>
         </div>
         <div className="store-layout1">
@@ -73,7 +73,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
               <div className="icon-phone" />
               <div className="modal-store-phone">{store.PHONE_NUM}</div>
             </div>
-            <div style={{'border' : 'none'}}>
+            <div style={{ 'border': 'none' }}>
               <div className="icon-money" />
               <div className="modal-first">1등&nbsp;
               <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
@@ -82,7 +82,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
               </div>
               <div className="modal-money">누적 금액&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
+            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.ACCUMULATED_MONEY}억</p>
               </div>
             </div>
           </div>

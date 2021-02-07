@@ -1,14 +1,16 @@
 import '../assets/css/Rank.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Store from './Store';
 import StoreModal from './StoreModal'
 
 import Location from '../constant/location'
-import { _dummy } from '../constant/dummy'
+import * as RANK from '../js/rank'
 
 function Rank() {
   const month = ['전체', '3개월', '6개월', '1년'];
+
+  const [rank, setRank] = useState([]);
   const [focus, setFocus] = useState(month[0]);
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedStore, setStore] = useState({})
@@ -24,6 +26,13 @@ function Rank() {
   const changeArea = (e) => {
     setArea(Number(e.target.value))
   }
+
+  useEffect(() => {
+    RANK.getRank().then(result => {
+      console.log(result)
+      setRank(result)
+    })
+  }, [])
 
   return (
     <div className="rank-top">
@@ -50,7 +59,7 @@ function Rank() {
         </div>
       </div>
       <div className="store-content">
-        {_dummy.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
+        {rank.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
         <div className="more-btn"></div>
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>

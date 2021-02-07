@@ -5,7 +5,6 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
 import Store from './Store'
 import StoreModal from './StoreModal'
 
-import * as MAP from '../js/maps'
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
 import { _dummy } from '../constant/dummy'
@@ -54,7 +53,7 @@ function Near() {
   }
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
-      MAP.getLatLong(query)
+      console.log(query)
     }
   }
   const handleChange = (e) => {
