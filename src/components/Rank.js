@@ -15,6 +15,7 @@ function Rank() {
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedStore, setStore] = useState({})
   const [selectedArea, setArea] = useState('')
+  const [lastIndex, setIndex] = useState(0)
 
   const openModal = (store) => {
     setIsOpen(true);
@@ -25,7 +26,10 @@ function Rank() {
   };
   const changeArea = (e) => {
     setArea(Number(e.target.value))
-  }
+  };
+  const moreBtnClicked = () => {
+    // TODO: 10개 씩 load
+  };
 
   useEffect(() => {
     RANK.getRank().then(result => {
