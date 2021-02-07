@@ -99,7 +99,7 @@
   position: absolute;
   top:20px;
   margin-left:71px;
-  width: 101px;
+  width: 80%;
   height: 24px;
   text-align: left;
   font-weight: bold;
@@ -114,7 +114,6 @@
   top: 44px;
   left: 71px;
   width: 220px;
-  height: 18px;
   text-align: left;
   font-size: 12px;
   line-height: 18px;
@@ -137,8 +136,8 @@
 .store-second {
   position: absolute;
   top: 70px;
-  left: 138px;
-  width: 55px;
+  left: 135px;
+  width: 60px;
   height: 19px;
   text-align: left;
   font-size: 13px;

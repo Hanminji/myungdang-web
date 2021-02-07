@@ -7,13 +7,13 @@
 .store-layout1 {
   position: relative;
   width: 310px;
-  height: 171px;
+  height: 150px;
   background-color: #ffffff;
   z-index: 10000;
 }
 .store-detail {
   position: absolute;
-  top: 55px;
+  top: 52px;
   left: 20px;
   width: 270px;
   height: 93px;
@@ -21,7 +21,7 @@
 .store-detail > div {
   position: relative;
   width: 270px;
-  height: 25px;
+  height:42px;
   margin-bottom: 9px;
   border-bottom: 1px #F8F8F8;
   border-bottom-style: inset;
@@ -35,9 +35,9 @@
 }
 .modal-store-name {
   position: absolute;
-  top: 14px;
+  top: 16px;
   left: 20px;
-  width: 114px;
+  width: 90%;
   height: 27px;
   text-align: left;
   font-weight: bold;
@@ -50,7 +50,7 @@
 .modal-store-addr {
   position: absolute;
   left: 25px;
-  width: 250px;
+  width: 90%;
   height: 100%;
   text-align: left;
   font-size: 13px;
@@ -58,10 +58,11 @@
   letter-spacing: -0.26px;
   color: #333333;
   opacity: 1;
+  display: flex;
+  align-items: center;
 }
 .icon-location{
   position: absolute;
-  top: -4px;
   left: 2px;
   width: 10px;
   height: 100%;
@@ -97,8 +98,8 @@
 }
 .icon-money {
   position: absolute;
-  top: -4px;
   left: 2px;
+  bottom: 5px;
   width: 10px;
   height: 100%;
   background: url('../img/coin_icon@2x.png');
@@ -108,10 +109,12 @@
   opacity: 1;
 }
 .modal-first {
+  display: flex;
+  align-items: center;
   position: absolute;
   left: 25px;
   width: 80px;
-  height: 100%;
+  height: 80%;
   text-align: left;
   font-size: 13px;
   line-height: 19px;
@@ -120,10 +123,12 @@
   opacity: 1;
 }
 .modal-second {
+  display: flex;
+  align-items: center;
   position: absolute;
-  left: 104px;
+  left: 98px;
   width: 80px;
-  height: 100%;
+  height: 80%;
   text-align: left;
   font-size: 13px;
   line-height: 19px;
@@ -132,10 +137,12 @@
   opacity: 1;
 }
 .modal-money {
+  display: flex;
+  align-items: center;
   position: absolute;
-  left: 180px;
+  left: 177px;
   width: 90px;
-  height: 100%;
+  height: 80%;
   text-align: left;
   font-size: 13px;
   line-height: 19px;

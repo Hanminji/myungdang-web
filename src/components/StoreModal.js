@@ -67,12 +67,12 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
           <div className="store-detail">
             <div>
               <div className="icon-location" />
-              <div className="modal-store-addr">{store.STORE_ADDR}</div>
+              <div className="modal-store-addr"><span>{store.STORE_ADDR}</span></div>
             </div>
-            <div>
+            {/* <div>
               <div className="icon-phone" />
               <div className="modal-store-phone">{store.PHONE_NUM}</div>
-            </div>
+            </div> */}
             <div style={{ 'border': 'none' }}>
               <div className="icon-money" />
               <div className="modal-first">1등&nbsp;
@@ -82,16 +82,16 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
             <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
               </div>
               <div className="modal-money">누적 금액&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.ACCUMULATED_MONEY}억</p>
+            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{Math.round(store.ACCUMULATED_MONEY / 100000000)}억</p>
               </div>
             </div>
           </div>
         </div>
         <div className="store-layout2">
-          <div className="call-btn"><p className="btn-text">전화연결</p></div>
+          <div className="call-btn"  onClick={() => closeModal()} ><p className="btn-text">닫기</p></div>
           <div className="find-btn"><p className="btn-text">길찾기</p></div>
         </div>
-        <div className="modal-close-btn" onClick={() => closeModal()} />
+        {/* <div className="modal-close-btn" onClick={() => closeModal()} /> */}
       </Modal>
     </div>
   );
