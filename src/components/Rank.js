@@ -17,8 +17,8 @@ function Rank() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedStore, setStore] = useState({});
   const [selectedArea, setArea] = useState('');
-  const [lastIndex] = useState(0);
   const [loading, setLoading] = useState(null);
+  let [lastIndex, setLastIndex] = useState(0);
 
   const openModal = (store) => {
     setIsOpen(true);
@@ -35,8 +35,7 @@ function Rank() {
   };
   const getRank = (city, town, index) => {
     setLoading(true);
-    RANK.getRank().then(result => {
-      console.log(result)
+    RANK.getRank('서울').then(result => {
       setLoading(false)
       setRank(result)
     })
@@ -73,7 +72,7 @@ function Rank() {
       </div>
       <div className="store-content">
         {rank.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
-        {lastIndex > 0 ? <div className="more-btn" onClick={() => moreBtnClicked} /> : <div />}
+        {rank.length > 0 ? <div className="more-btn" onClick={() => moreBtnClicked} /> : <div />}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
     </div>
