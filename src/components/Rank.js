@@ -28,6 +28,7 @@ function Rank({ setLoading }) {
   };
   const changeArea = (e) => {
     setArea(Number(e.target.value))
+    setDetailedArea('')
   };
   const changeDetailArea = (e) => {
     setRank([])
