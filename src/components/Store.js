@@ -13,18 +13,20 @@ function Store({ store, openModal, type }) {
   return (
     <div className="store">
       {number}
-      <div className="store-name">{store.STORE_NAME}</div>
-      <div className="store-addr">
-        {store.STORE_ADDR.length > 25 ? <span>{store.STORE_ADDR.substring(0, 25)+ ".."} </span> : <span>{store.STORE_ADDR}</span>}
-      </div>
-      <div className="store-first">1등 &nbsp;
-    <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
-      </div>
-      <div className="store-second">2등 &nbsp;
-    <p style={{ 'fontWeightt': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
-      </div>
-      <div className="store-accumulate-money">누적 금액 &nbsp;
-    <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{Math.round(store.ACCUMULATED_MONEY / 100000000)}억</p>
+      <div className="store-list"> 
+        <div className="store-name">{store.STORE_NAME}</div>
+        <div className="store-addr">{store.STORE_ADDR}</div>
+        <div className="rank-content">
+        <div className="store-first">1등 &nbsp;
+          <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
+        </div>
+        <div className="store-second">2등 &nbsp;
+          <p style={{ 'fontWeightt': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
+        </div>
+        <div className="store-accumulate-money">누적 금액 &nbsp;
+           <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{Math.round(store.ACCUMULATED_MONEY / 100000000)}억</p>
+        </div>
+        </div>
       </div>
       <div className="store-modal-btn" onClick={() => openModal(store)} />
     </div>

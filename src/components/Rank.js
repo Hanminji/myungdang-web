@@ -5,10 +5,9 @@ import Store from './Store';
 import StoreModal from './StoreModal'
 
 import Location from '../constant/location'
-import Loading from '../components/Loading'
 import * as RANK from '../js/rank'
 
-function Rank() {
+function Rank({ setLoading }) {
   //TODO: 기간별 RANK 조회 기능
   // const month = ['전체', '3개월', '6개월', '1년'];
   // const [focus, setFocus] = useState(month[0]);
@@ -17,7 +16,7 @@ function Rank() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedStore, setStore] = useState({});
   const [selectedArea, setArea] = useState('');
-  const [loading, setLoading] = useState(null);
+  const [selectedDetailArea, setDetailedArea] = useState('');
   let [lastIndex, setLastIndex] = useState(0);
 
   const openModal = (store) => {
@@ -30,14 +29,23 @@ function Rank() {
   const changeArea = (e) => {
     setArea(Number(e.target.value))
   };
+  const changeDetailArea = (e) => {
+    setRank([])
+    setDetailedArea(Number(e.target.value))
+    getRank(0, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][e.target.value])
+  }
+  const changeIndex = (num) => {
+    setLastIndex(num)
+    getRank(num)
+  }
   const moreBtnClicked = () => {
-    // TODO: 10개 씩 load
+    changeIndex(lastIndex + 10)
   };
-  const getRank = (city, town, index) => {
+  const getRank = (index, city, town) => {
     setLoading(true);
-    RANK.getRank('서울').then(result => {
+    RANK.getRank(index, city, town).then(result => {
       setLoading(false)
-      setRank(result)
+      setRank(old => [...old, ...result])
     })
   };
 
@@ -47,7 +55,6 @@ function Rank() {
 
   return (
     <div className="rank-top">
-      {loading ? <Loading /> : <div />}
       <div className="content">
         <div className="location-left">
           <select value={selectedArea} onChange={changeArea}>
@@ -56,7 +63,7 @@ function Rank() {
           </select>
         </div>
         <div className="location-right">
-          <select>
+          <select value={selectedDetailArea} onChange={changeDetailArea}>
             <option value="">시·군·구 선택</option>
             {Location['detailArea' + selectedArea].map((area, index) => (<option value={index} key={area}>{area}</option>))}
           </select>
@@ -72,7 +79,7 @@ function Rank() {
       </div>
       <div className="store-content">
         {rank.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
-        {rank.length > 0 ? <div className="more-btn" onClick={() => moreBtnClicked} /> : <div />}
+        {rank.length > 0 ? <div className="more-btn" onClick={moreBtnClicked} /> : <div />}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
     </div>

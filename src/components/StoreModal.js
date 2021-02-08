@@ -33,7 +33,7 @@ function NaverMapAPIModal({lat, lng}) {
         height: '100%'
       }}
       defaultCenter={{ lat, lng }} // 지도 초기 위치
-      defaultZoom={14} // 지도 초기 확대 배율
+      defaultZoom={17} // 지도 초기 확대 배율
     >
       <Marker
         key={1}
