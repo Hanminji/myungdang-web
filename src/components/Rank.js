@@ -33,13 +33,17 @@ function Rank({ setLoading }) {
     getRank(0, Location.area0_format[Number(e.target.value)])
   };
   const changeDetailArea = (e) => {
-    setDetailedArea(Number(e.target.value))
+    if (e.target.value !== '') {
+      setDetailedArea(Number(e.target.value))
+    } else {
+      setDetailedArea(e.target.value)
+    }
     setRank([])
     getRank(0, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][e.target.value])
   }
   const changeIndex = (num) => {
     setLastIndex(num)
-    getRank(num)
+    getRank(num, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][selectedDetailArea])
   }
   const moreBtnClicked = () => {
     changeIndex(lastIndex + 10)

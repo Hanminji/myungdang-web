@@ -15,7 +15,6 @@ export function getRank(index, city, town) {
       TOWN: town
     }
   }
-  console.log(config)
   return axios.get(URL + '/rank', config).then(result => {
     return result.data
   })
