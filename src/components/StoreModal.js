@@ -1,6 +1,5 @@
 import Modal from 'react-modal'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import '../assets/css/StoreModal.css'
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
@@ -51,10 +50,9 @@ function NaverMapAPIModal({ lat, lng }) {
   );
 }
 function StoreModal({ closeModal, modalIsOpen, store }) {
-  const copyToClipBoard = () => {
-    alert('주소가 복사되었습니다.')
-  }
-
+  const searchPath = (query) => {
+    window.location.href = 'nmap://search?query=' + query + '&appname=myungdang'
+  };
   return (
     <div>
       <Modal
@@ -95,9 +93,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
         </div>
         <div className="store-layout2">
           <div className="call-btn" onClick={() => closeModal()} ><p className="btn-text">닫기</p></div>
-          <CopyToClipboard text={store.STORE_ADDR}>
-            <div className="find-btn"><p onClick={copyToClipBoard} className="btn-text">주소 복사</p></div>
-          </CopyToClipboard>
+            <div className="find-btn" onClick={() => searchPath(store.STORE_ADDR)}><p className="btn-text">길찾기</p></div>
         </div>
         {/* <div className="modal-close-btn" onClick={() => closeModal()} /> */}
       </Modal>

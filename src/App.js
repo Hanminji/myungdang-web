@@ -19,7 +19,7 @@ function App() {
         <Header />
           <Tab changeTab={changeTab} tabName={tabName} />
       </div>
-      { tabName === 'rank' ? <Rank setLoading={setLoading} /> : <Near />}
+      { tabName === 'rank' ? <Rank setLoading={setLoading} /> : <Near setLoading={setLoading} />}
     </div>
   );
 }

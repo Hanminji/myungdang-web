@@ -1,5 +1,5 @@
 import '../assets/css/Near.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
 
 import Store from './Store'
@@ -9,9 +9,8 @@ import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
 import { _dummy } from '../constant/dummy'
 
-function NaverMapAPI() {
+function NaverMapAPI({lat, lng}) {
   const navermaps = window.naver.maps;
-
   return (
     <NaverMap
       id='map-near'
@@ -19,12 +18,12 @@ function NaverMapAPI() {
         width: '100%',
         height: '100%'
       }}
-      defaultCenter={{ lat: 37.551229, lng: 126.988205 }} // 지도 초기 위치
-      defaultZoom={14} // 지도 초기 확대 배율
+      center={{ lat, lng }}
+      defaultZoom={14}
     >
       <Marker
         key={1}
-        position={new navermaps.LatLng(37.551229, 126.988205)}
+        position={new navermaps.LatLng(lat, lng)}
         animation={0}
         icon={{
           url: MarkerImg,
@@ -36,13 +35,15 @@ function NaverMapAPI() {
   );
 }
 
-function Near() {
+function Near({setLoading}) {
   const tabs = ['rank', 'near'];
 
   const [selectedTab, setTab] = useState(tabs[0])
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedStore, setStore] = useState({})
   const [query, setQuery] = useState('')
+  const [lat, setLat] = useState(0)
+  const [lng, setLng] = useState(0)
 
   const openModal = (store) => {
     setIsOpen(true)
@@ -59,6 +60,24 @@ function Near() {
   const handleChange = (e) => {
     setQuery(e.target.value)
   }
+  const getLocation = () => {
+    setLoading(true)
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        setLoading(false)
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      },
+      function (error) {
+        setLat(37.498095)
+        setLng(127.027610)
+      }
+    );
+  }
+
+  useEffect(() => {
+    getLocation()
+  }, [])
 
   return (
     <div>
@@ -69,11 +88,12 @@ function Near() {
       </div>
       {!modalIsOpen ? <div className="near-content">
         <div className="near-map" id="map-near">
-          <div className="gps-btn" />
-          <RenderAfterNavermapsLoaded
-            ncpClientId={'fpfch34q29'}>
-            <NaverMapAPI />
-          </RenderAfterNavermapsLoaded>
+          <div className="gps-btn" onClick={getLocation} />
+          {(lat !== 0 && lng !== 0) ?
+            <RenderAfterNavermapsLoaded
+              ncpClientId={'fpfch34q29'}>
+              <NaverMapAPI lat={lat} lng={lng} />
+            </RenderAfterNavermapsLoaded> : <div />}
         </div>
       </div> : <div className="near-content" />}
       <div className="location-content">
