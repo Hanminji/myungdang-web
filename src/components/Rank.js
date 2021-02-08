@@ -29,10 +29,12 @@ function Rank({ setLoading }) {
   const changeArea = (e) => {
     setArea(Number(e.target.value))
     setDetailedArea('')
+    setRank([])
+    getRank(0, Location.area0_format[Number(e.target.value)])
   };
   const changeDetailArea = (e) => {
-    setRank([])
     setDetailedArea(Number(e.target.value))
+    setRank([])
     getRank(0, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][e.target.value])
   }
   const changeIndex = (num) => {
