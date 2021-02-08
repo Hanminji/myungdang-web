@@ -175,4 +175,10 @@
   width: 100%;
   height: 24px;
   top: 70px;
+  width: 100%;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.26px;
+  text-align: left;
+  color: #333333;
 }

@@ -33,7 +33,7 @@ function NaverMapAPIModal({ lat, lng }) {
         width: '100%',
         height: '100%'
       }}
-      defaultCenter={{ lat, lng }} // 지도 초기 위치
+      center={{ lat, lng }} // 지도 초기 위치
       defaultZoom={17} // 지도 초기 확대 배율
     >
       <Marker
@@ -73,31 +73,22 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
               <div className="icon-location" />
               <div className="modal-store-addr"><span>{store.STORE_ADDR}</span></div>
             </div>
-            {/* <div>
-              <div className="icon-phone" />
-              <div className="modal-store-phone">{store.PHONE_NUM}</div>
-            </div> */}
             <div style={{ 'border': 'none' }}>
               <div className="icon-money" />
-              <div className="modal-first">1등&nbsp;
-              <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
-              </div>
-              <div className="modal-second">2등&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
-              </div>
-              <div className="modal-money">누적 금액&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{Math.round(store.ACCUMULATED_MONEY / 100000000)}억</p>
+              <div className="modal-first">
+                1등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>&nbsp;&nbsp;&nbsp;
+                2등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>&nbsp;&nbsp;&nbsp;
+                누적 금액&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{(store.ACCUMULATED_MONEY / 100000000).toFixed(1)}억</p>
               </div>
             </div>
           </div>
         </div>
         <div className="store-layout2">
           <div className="call-btn" onClick={() => closeModal()} ><p className="btn-text">닫기</p></div>
-            <div className="find-btn" onClick={() => searchPath(store.STORE_ADDR)}><p className="btn-text">길찾기</p></div>
+          <div className="find-btn" onClick={() => searchPath(store.STORE_ADDR)}><p className="btn-text">길찾기</p></div>
         </div>
-        {/* <div className="modal-close-btn" onClick={() => closeModal()} /> */}
       </Modal>
-    </div>
+    </div >
   );
 }
 

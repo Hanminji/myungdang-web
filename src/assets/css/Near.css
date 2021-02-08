@@ -111,3 +111,24 @@ input#location {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.find-location-btn {
+  position: relative;
+  margin: 0 auto;
+  top: 18px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+  color: #FFFFFF;
+  width: 81px;
+  height: 30px;
+  background: #333333 0% 0% no-repeat padding-box;
+  box-shadow: 0px 7px 10px #00000029;
+  border-radius: 8px;
+  opacity: 1;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

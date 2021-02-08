@@ -9,7 +9,7 @@ import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
 import { _dummy } from '../constant/dummy'
 
-function NaverMapAPI({lat, lng}) {
+function NaverMapAPI({ lat, lng }) {
   const navermaps = window.naver.maps;
   return (
     <NaverMap
@@ -35,7 +35,7 @@ function NaverMapAPI({lat, lng}) {
   );
 }
 
-function Near({setLoading}) {
+function Near({ setLoading }) {
   const tabs = ['rank', 'near'];
 
   const [selectedTab, setTab] = useState(tabs[0])
@@ -89,6 +89,7 @@ function Near({setLoading}) {
       {!modalIsOpen ? <div className="near-content">
         <div className="near-map" id="map-near">
           <div className="gps-btn" onClick={getLocation} />
+          <div className="find-location-btn" ><span>이 지역 검색</span></div>
           {(lat !== 0 && lng !== 0) ?
             <RenderAfterNavermapsLoaded
               ncpClientId={'fpfch34q29'}>
