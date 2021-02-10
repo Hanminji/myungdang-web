@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Store from "./Store";
 import StoreModal from "./StoreModal";
 
-import Location from "../constant/location";
-import * as RANK from "../js/rank";
-import Loader from "./Loader";
+import Location from '../constant/location'
+import Footer from '../components/Footer'
+import * as RANK from '../js/rank'
 
 function Rank({ setLoading }) {
   //TODO: 기간별 RANK 조회 기능
@@ -107,6 +107,7 @@ function Rank({ setLoading }) {
         {rank.length > 0 ? <div className="more-btn" onClick={moreBtnClicked} /> : <div />}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
+      {rank.length > 0 ? <Footer /> : <div/>}
     </div>
   );
 }
