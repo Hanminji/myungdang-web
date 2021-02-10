@@ -11,8 +11,7 @@
 .rank-img-1 {
   position: absolute;
   top: 24px;
-  margin-left: 20px;
-  /* left: 20px; */
+  margin-left: 5%;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking1@2x.png');
@@ -23,7 +22,7 @@
 .rank-img-2 {
   position: absolute;
   top: 24px;
-  margin-left: 20px;
+  margin-left: 5%;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking2@2x.png');
@@ -34,7 +33,7 @@
 .rank-img-2 {
   position: absolute;
   top: 24px;
-  margin-left: 20px;
+  margin-left: 5%;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking2@2x.png');
@@ -45,7 +44,7 @@
 .rank-img-3 {
   position: absolute;
   top: 24px;
-  margin-left: 20px;
+  margin-left: 5%;
   width: 40px;
   height: 31px;
   background-image: url('../img/ranking3@2x.png');
@@ -56,14 +55,13 @@
 .rank-img {
   position: absolute;
   top: 24px;
-  margin-left: 20px;
   width: 40px;
   height: 31px;
 }
 .rank-text {
   position: absolute;
   top: 25px;
-  margin-left: 27px;
+  margin-left: 7%;
   width: 24px;
   height: 29px;
   text-align: center;
@@ -165,7 +163,8 @@
 }
 .store-list {
   position: relative;
-  width: 63%;
+  left: 10px;
+  width: 65%;
   height: 100%;
   margin: 0 auto;
 }
@@ -178,7 +177,7 @@
   width: 100%;
   font-size: 13px;
   line-height: 19px;
-  letter-spacing: -0.26px;
+  letter-spacing: -0.1px;
   text-align: left;
   color: #333333;
 }

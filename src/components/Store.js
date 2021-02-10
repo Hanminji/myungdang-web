@@ -8,7 +8,12 @@ function Store({ store, openModal, type }) {
   } else if (type === 'number') {
     number = <div className="rank-text"><p>{store.RANK}</p></div>
   } else if (type === 'distance') {
-    number = <div className="rank-distance"><p>20m</p></div>
+    if (Math.round(store.DISTANCE * 1000) > 1000) {
+      number = <div className="rank-distance"><p>{store.DISTANCE.toFixed(1)}km</p></div>
+    } else {
+      number = <div className="rank-distance"><p> {Math.round(store.DISTANCE * 1000)}m</p></div>
+    }
+   
   }
   return (
     <div className="store">

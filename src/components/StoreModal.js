@@ -70,16 +70,17 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
           <div className="modal-store-name">{store.STORE_NAME}</div>
           <div className="store-detail">
             <div>
-              <div className="icon-location" />
-              <div className="modal-store-addr"><span>{store.STORE_ADDR}</span></div>
-            </div>
-            <div style={{ 'border': 'none' }}>
               <div className="icon-money" />
               <div className="modal-first">
                 1등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>&nbsp;&nbsp;&nbsp;
                 2등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>&nbsp;&nbsp;&nbsp;
                 누적 금액&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{(store.ACCUMULATED_MONEY / 100000000).toFixed(1)}억</p>
               </div>
+            </div>
+            <div style={{ 'border': 'none' }}>
+              <div className="icon-location" />
+
+              <div className="modal-store-addr"><span>{store.STORE_ADDR}</span></div>
             </div>
           </div>
         </div>
