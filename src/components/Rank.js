@@ -5,6 +5,7 @@ import Store from './Store';
 import StoreModal from './StoreModal'
 
 import Location from '../constant/location'
+import Footer from '../components/Footer'
 import * as RANK from '../js/rank'
 
 function Rank({ setLoading }) {
@@ -89,6 +90,7 @@ function Rank({ setLoading }) {
         {rank.length > 0 ? <div className="more-btn" onClick={moreBtnClicked} /> : <div />}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
+      {rank.length > 0 ? <Footer /> : <div/>}
     </div>
   )
 }

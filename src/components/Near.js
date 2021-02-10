@@ -4,6 +4,7 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
 
 import Store from './Store'
 import StoreModal from './StoreModal'
+import Footer from './Footer'
 import * as RANK from '../js/rank'
 
 import MarkerImg from '../assets/img/map_pin@2x.png'
@@ -217,6 +218,7 @@ function Near({ setLoading }) {
         {/* {noData && !isFirst ? <div className="no-data"> No data </div> : <div />} */}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
+      {rank.length > 0 ? <Footer /> : <div/>}
     </div>
   );
 }
