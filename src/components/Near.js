@@ -49,11 +49,10 @@ function Near({ setLoading }) {
   const [selectedStore, setStore] = useState({})
   const [query, setQuery] = useState('')
   const [location, setLocation] = useState({})
-  // const [centerLat, setCenterLat] = useState(0)
-  // const [centerLng, setCenterLng] = useState(0)
   const [lastIndex, setLastIndex] = useState(0)
   const [isFirst, setFirst] = useState(false)
   const [isSearch, setSearch] = useState(false)
+  // const [noData, setNoData] = useState(false)
 
   const openModal = (store) => {
     setIsOpen(true)
@@ -82,11 +81,11 @@ function Near({ setLoading }) {
     navigator.geolocation.getCurrentPosition(
       function (position) {
         setLoading(false)
-        setLocation({lat: position.coords.latitude, lng: position.coords.longitude});
+        setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
       },
       function (error) {
         setLoading(false)
-        setLocation({lat: 37.498095, lng: 127.027610});
+        setLocation({ lat: 37.498095, lng: 127.027610 });
       }
     );
   }
@@ -100,6 +99,7 @@ function Near({ setLoading }) {
   const getNearWithLatLng = (location, num) => {
     setLoading(true)
     RANK.getNearWithLatLng(location.lat, location.lng, num).then(result => {
+      // result.length === 0 && !isFirst ? setNoData(true) : setNoData(false)
       setRank(old => [...old, ...result])
       setLoading(false)
     })
@@ -107,14 +107,22 @@ function Near({ setLoading }) {
   const getNearWithAddress = (address, num) => {
     setLoading(true)
     RANK.getNearWithAddress(address, num).then(result => {
-      setLocation({lat: result[0].REQ_LAT, lng: result[0].REQ_LON})
-      setRank(old => [...old, ...result])
       setLoading(false)
+      if (result.length === 0) {
+        // setNoData(true)
+        return
+      } else {
+        setLocation({ lat: result[0].REQ_LAT, lng: result[0].REQ_LON })
+        setRank(old => [...old, ...result])
+      }
     })
   }
   const getRankWithLatLng = (location, num) => {
     setLoading(true)
     RANK.getRankWithLatLng(location.lat, location.lng, num).then(result => {
+      console.log(result)
+
+      // result.length === 0 && !isFirst ? setNoData(true) : setNoData(false)
       setRank(old => [...old, ...result])
       setLoading(false)
     })
@@ -122,16 +130,19 @@ function Near({ setLoading }) {
   const getRankWithAddress = (address, num) => {
     setLoading(true)
     RANK.getRankWithAddress(address, num).then(result => {
-      setLocation({lat: result[0].REQ_LAT, lng: result[0].REQ_LON})
-      setRank(old => [...old, ...result])
       setLoading(false)
+      if (result.length === 0) {
+        // setNoData(true)
+        return
+      } else {
+        setLocation({ lat: result[0].REQ_LAT, lng: result[0].REQ_LON })
+        setRank(old => [...old, ...result])
+      }
     })
   }
 
   const changeCenter = (center) => {
-    // setCenterLat(center.y)
-    // setCenterLng(center.x)
-    setLocation({lat: center.y, lng:center.x})
+    setLocation({ lat: center.y, lng: center.x })
   }
   const searchCenter = () => {
     setRank([])
@@ -151,7 +162,7 @@ function Near({ setLoading }) {
   }, [isFirst])
 
   useEffect(() => {
-    if (location.lat  && location.lng ) {
+    if (location.lat && location.lng) {
       setFirst(true)
     }
   }, [location])
@@ -176,7 +187,7 @@ function Near({ setLoading }) {
           <input className="input-search" onKeyDown={handleKeyDown} onChange={handleChange} id="location" placeholder="도로명, 지번 주소로 검색해주세요." />
         </div>
       </div>
-      {!modalIsOpen && isFirst? <div className="near-content">
+      {!modalIsOpen && isFirst ? <div className="near-content">
         <div className="near-map" id="map-near">
           {/* <div className="gps-btn" onClick={getLocation} /> */}
           <div onClick={() => searchCenter()} className="find-location-btn" ><span>이 지역 검색</span></div>
@@ -200,10 +211,10 @@ function Near({ setLoading }) {
         </div>
       </div> : <div />}
       <div className="store-content">
-        {/* {noData ? <div className="no-data"> No data </div> : <div />} */}
         {rank.map((store) => (
           <Store store={store} openModal={openModal} type={(selectedTab === 'rank') ? 'number' : 'distance'} key={store.STORE_ID} />))}
         {rank.length > 0 ? <div className="more-btn" onClick={moreBtnClicked} /> : <div />}
+        {/* {noData && !isFirst ? <div className="no-data"> No data </div> : <div />} */}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
     </div>
