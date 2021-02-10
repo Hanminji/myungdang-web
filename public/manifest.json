@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "명당",
+  "name": "당신이 찾는 로또 명당",
   "icons": [
     {
       "src": "favicon.ico",
