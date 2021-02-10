@@ -1,5 +1,6 @@
 import Modal from 'react-modal'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps';
+
 import '../assets/css/StoreModal.css'
 import MarkerImg from '../assets/img/myungdang_pin@2x.png'
 
@@ -22,7 +23,7 @@ const customStyles = {
   }
 };
 
-function NaverMapAPIModal({lat, lng}) {
+function NaverMapAPIModal({ lat, lng }) {
   const navermaps = window.naver.maps;
 
   return (
@@ -32,8 +33,8 @@ function NaverMapAPIModal({lat, lng}) {
         width: '100%',
         height: '100%'
       }}
-      defaultCenter={{ lat, lng }} // 지도 초기 위치
-      defaultZoom={14} // 지도 초기 확대 배율
+      center={{ lat, lng }} // 지도 초기 위치
+      defaultZoom={17} // 지도 초기 확대 배율
     >
       <Marker
         key={1}
@@ -49,6 +50,9 @@ function NaverMapAPIModal({lat, lng}) {
   );
 }
 function StoreModal({ closeModal, modalIsOpen, store }) {
+  const searchPath = (query) => {
+    window.location.href = 'nmap://search?query=' + query + '&appname=myungdang'
+  };
   return (
     <div>
       <Modal
@@ -66,34 +70,26 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
           <div className="modal-store-name">{store.STORE_NAME}</div>
           <div className="store-detail">
             <div>
-              <div className="icon-location" />
-              <div className="modal-store-addr">{store.STORE_ADDR}</div>
-            </div>
-            <div>
-              <div className="icon-phone" />
-              <div className="modal-store-phone">{store.PHONE_NUM}</div>
+              <div className="icon-money" />
+              <div className="modal-first">
+                1등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>&nbsp;&nbsp;&nbsp;
+                2등&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>&nbsp;&nbsp;&nbsp;
+                누적 금액&nbsp;<p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{(store.ACCUMULATED_MONEY / 100000000).toFixed(1)}억</p>
+              </div>
             </div>
             <div style={{ 'border': 'none' }}>
-              <div className="icon-money" />
-              <div className="modal-first">1등&nbsp;
-              <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_FIRST_COUNT}회</p>
-              </div>
-              <div className="modal-second">2등&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.RANK_SECOND_COUNT}회</p>
-              </div>
-              <div className="modal-money">누적 금액&nbsp;
-            <p style={{ 'fontWeight': 'bold', 'display': 'inline' }}>{store.ACCUMULATED_MONEY}억</p>
-              </div>
+              <div className="icon-location" />
+
+              <div className="modal-store-addr"><span>{store.STORE_ADDR}</span></div>
             </div>
           </div>
         </div>
         <div className="store-layout2">
-          <div className="call-btn"><p className="btn-text">전화연결</p></div>
-          <div className="find-btn"><p className="btn-text">길찾기</p></div>
+          <div className="call-btn" onClick={() => closeModal()} ><p className="btn-text">닫기</p></div>
+          <div className="find-btn" onClick={() => searchPath(store.STORE_ADDR)}><p className="btn-text">길찾기</p></div>
         </div>
-        <div className="modal-close-btn" onClick={() => closeModal()} />
       </Modal>
-    </div>
+    </div >
   );
 }
 
