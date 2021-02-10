@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Store from "./Store";
 import StoreModal from "./StoreModal";
 
-import Location from '../constant/location'
-import Footer from '../components/Footer'
-import * as RANK from '../js/rank'
+import Location from "../constant/location";
+import Footer from "../components/Footer";
+import * as RANK from "../js/rank";
 
 function Rank({ setLoading }) {
   //TODO: 기간별 RANK 조회 기능
@@ -16,8 +16,8 @@ function Rank({ setLoading }) {
   const [rank, setRank] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedStore, setStore] = useState({});
-  const [selectedArea, setArea] = useState('');
-  const [selectedDetailArea, setDetailedArea] = useState('');
+  const [selectedArea, setArea] = useState("");
+  const [selectedDetailArea, setDetailedArea] = useState("");
   let [lastIndex, setLastIndex] = useState(0);
 
   const openModal = (store) => {
@@ -28,47 +28,49 @@ function Rank({ setLoading }) {
     setIsOpen(false);
   };
   const changeArea = (e) => {
-    setArea(Number(e.target.value))
-    setDetailedArea('')
-    setRank([])
-    getRank(0, Location.area0_format[Number(e.target.value)])
+    setArea(Number(e.target.value));
+    setDetailedArea("");
+    setRank([]);
+    getRank(0, Location.area0_format[Number(e.target.value)]);
   };
   const changeDetailArea = (e) => {
-    if (e.target.value !== '') {
-      setDetailedArea(Number(e.target.value))
+    if (e.target.value !== "") {
+      setDetailedArea(Number(e.target.value));
     } else {
-      setDetailedArea(e.target.value)
+      setDetailedArea(e.target.value);
     }
-    setRank([])
-    getRank(0, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][e.target.value])
-  }
+    setRank([]);
+    getRank(
+      0,
+      Location.area0_format[selectedArea],
+      Location["detailArea" + selectedArea][e.target.value]
+    );
+  };
   const changeIndex = (num) => {
-    setLastIndex(num)
-    getRank(num, Location.area0_format[selectedArea], Location['detailArea' + selectedArea][selectedDetailArea])
-  }
+    setLastIndex(num);
+    getRank(
+      num,
+      Location.area0_format[selectedArea],
+      Location["detailArea" + selectedArea][selectedDetailArea]
+    );
+  };
   const moreBtnClicked = () => {
-    changeIndex(lastIndex + 10)
+    changeIndex(lastIndex + 10);
   };
   const getRank = (index, city, town) => {
     setLoading(true);
-    RANK.getRank(index, city, town).then(result => {
-      setLoading(false)
-      setRank(old => [...old, ...result])
-    })
+    RANK.getRank(index, city, town).then((result) => {
+      setLoading(false);
+      setRank((old) => [...old, ...result]);
+    });
   };
 
-    RANK.getRank(city, town, term).then((result) => {
-      setRank(result);
-    });
-    setLoading(false);
-  };
   useEffect(() => {
-    getRank()
-  }, [])
+    getRank();
+  }, []);
 
   return (
     <div className="rank-top">
-      {loading ? <Loader /> : <div />}
       <div className="content">
         <div className="location-left">
           <select value={selectedArea} onChange={changeArea}>
@@ -92,22 +94,34 @@ function Rank({ setLoading }) {
         </div>
         {/* <div className="month">
           {month.map((mnth, index) => (
-            <button
-              className={"month-button" + (focus === mnth ? "-active" : "")}
-              onClick={() => setFocus(mnth)}
-              key={mnth}
-            >
+            <button className={"month-button" + (focus === mnth ? "-active" : "")}
+              onClick={() => setFocus(mnth)} key={mnth}>
               {mnth}
             </button>
           ))}
         </div> */}
       </div>
       <div className="store-content">
-        {rank.map((store) => (<Store store={store} openModal={openModal} type='rank' key={store.STORE_ID} />))}
-        {rank.length > 0 ? <div className="more-btn" onClick={moreBtnClicked} /> : <div />}
-        <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
+        {rank.map((store) => (
+          <Store
+            store={store}
+            openModal={openModal}
+            type="rank"
+            key={store.STORE_ID}
+          />
+        ))}
+        {rank.length > 0 ? (
+          <div className="more-btn" onClick={moreBtnClicked} />
+        ) : (
+          <div />
+        )}
+        <StoreModal
+          closeModal={closeModal}
+          modalIsOpen={modalIsOpen}
+          store={selectedStore}
+        />
       </div>
-      {rank.length > 0 ? <Footer /> : <div/>}
+      {rank.length > 0 ? <Footer /> : <div />}
     </div>
   );
 }
