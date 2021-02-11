@@ -9,7 +9,7 @@
   width: 310px;
   height: 165px;
   background-color: #ffffff;
-  z-index: 10000;
+  z-index: 999;
 }
 .store-detail {
   position: absolute;

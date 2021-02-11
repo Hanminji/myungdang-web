@@ -126,8 +126,11 @@ input#location {
   z-index: 100;
   display: flex;
   justify-content: center;
-  align-items: center;
   opacity: 0.85
+}
+.find-location-btn > span {
+  position: absolute;
+  top: 6.5px;
 }
 
 .search-guide {

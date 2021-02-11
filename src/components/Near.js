@@ -8,10 +8,26 @@ import Footer from './Footer'
 import * as RANK from '../js/rank'
 
 import MarkerImg from '../assets/img/map_pin@2x.png'
+import GPSImg from '../assets/img/myspot_pin@2x.png'
 
-function NaverMapAPI({ location, stores, tab, changeCenter, openModal }) {
+function NaverMapAPI({ location, stores, tab, GPS, changeCenter, openModal }) {
   const navermaps = window.naver.maps;
   const zoomLevel = tab === 'rank' ? 14 : 14
+
+  let gpsMarker = <div />
+  if (GPS) {
+    gpsMarker = <Marker
+      key={'gpsMarker'}
+      position={new navermaps.LatLng({ lat: parseFloat(GPS.lat), lng: parseFloat(GPS.lng) })}
+      animation={0}
+      icon={{
+        url: GPSImg,
+        size: { width: 35, height: 35 },
+        scaledSize: { width: 35, height: 35 }
+      }}
+    ></Marker>
+  }
+
   return (
     <NaverMap
       id='map-near'
@@ -37,6 +53,7 @@ function NaverMapAPI({ location, stores, tab, changeCenter, openModal }) {
             openModal(store)
           }}
         />))}
+      {gpsMarker}
     </NaverMap>
   );
 }
@@ -53,6 +70,7 @@ function Near({ setLoading }) {
   const [lastIndex, setLastIndex] = useState(0)
   const [isFirst, setFirst] = useState(false)
   const [isSearch, setSearch] = useState(false)
+  const [GPS, setGPS] = useState({})
   // const [noData, setNoData] = useState(false)
 
   const openModal = (store) => {
@@ -136,6 +154,7 @@ function Near({ setLoading }) {
         // setNoData(true)
         return
       } else {
+        console.log(result[0])
         setLocation({ lat: result[0].REQ_LAT, lng: result[0].REQ_LON })
         setRank(old => [...old, ...result])
       }
@@ -159,6 +178,10 @@ function Near({ setLoading }) {
   useEffect(() => {
     if (isFirst) {
       getRankWithLatLng(location, 0)
+      setGPS({
+        lat: location.lat,
+        lng: location.lng
+      })
     }
   }, [isFirst])
 
@@ -194,7 +217,7 @@ function Near({ setLoading }) {
           <div onClick={() => searchCenter()} className="find-location-btn" ><span>이 지역 검색</span></div>
           <RenderAfterNavermapsLoaded
             ncpClientId={'fpfch34q29'}>
-            <NaverMapAPI location={location} stores={rank} tab={selectedTab} changeCenter={changeCenter} openModal={openModal} />
+            <NaverMapAPI location={location} stores={rank} tab={selectedTab} GPS={GPS} changeCenter={changeCenter} openModal={openModal} />
           </RenderAfterNavermapsLoaded>
         </div>
       </div> : <div className="near-content" />}
@@ -218,7 +241,7 @@ function Near({ setLoading }) {
         {/* {noData && !isFirst ? <div className="no-data"> No data </div> : <div />} */}
         <StoreModal closeModal={closeModal} modalIsOpen={modalIsOpen} store={selectedStore} />
       </div>
-      {rank.length > 0 ? <Footer /> : <div/>}
+      {rank.length > 0 ? <Footer /> : <div />}
     </div>
   );
 }

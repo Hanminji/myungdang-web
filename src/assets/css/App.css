@@ -1,5 +1,14 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
+@media (min-width: 1020px) {
+  body{
+    width: 400px;
+    margin: 0 auto;
+  }
+  #root {
+    width: 100%;
+  }
+}
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 button, input, select {
   -moz-appearance: none;

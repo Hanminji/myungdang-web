@@ -66,6 +66,7 @@ function StoreModal({ closeModal, modalIsOpen, store }) {
             <NaverMapAPIModal lat={store.LATITUDE} lng={store.LONGITUDE} />
           </RenderAfterNavermapsLoaded>
         </div>
+
         <div className="store-layout1">
           <div className="modal-store-name">{store.STORE_NAME}</div>
           <div className="store-detail">
