@@ -213,7 +213,7 @@ function Near({ setLoading }) {
       </div>
       {!modalIsOpen && isFirst ? <div className="near-content">
         <div className="near-map" id="map-near">
-          {/* <div className="gps-btn" onClick={getLocation} /> */}
+          <div className="gps-btn" onClick={getLocation} />
           <div onClick={() => searchCenter()} className="find-location-btn" ><span>이 지역 검색</span></div>
           <RenderAfterNavermapsLoaded
             ncpClientId={'fpfch34q29'}>
