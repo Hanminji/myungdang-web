@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "https://asia-northeast3-myungdang-f73cd.cloudfunctions.net/rank";
+const URL = "https://asia-northeast3-myungdang-2nd.cloudfunctions.net/rank";
 // const URL = 'http://localhost:5001/myungdang-f73cd/asia-northeast3/rank'
 
 export function getRank(index, city, town) {
@@ -7,6 +7,7 @@ export function getRank(index, city, town) {
     city = encodeURI(city);
     town = encodeURI(town);
   }
+  console.log(encodeURI(city))
   let config = {
     params: {
       LAST_INDEX: index,
