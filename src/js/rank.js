@@ -1,6 +1,6 @@
 import axios from "axios";
-const URL = "https://asia-northeast3-myungdang-2nd.cloudfunctions.net/rank";
-// const URL = 'http://localhost:5001/myungdang-2nd/asia-northeast3/rank'
+// const URL = "https://asia-northeast3-myungdang-2nd.cloudfunctions.net/rank";
+const URL = 'http://localhost:5001/myungdang-2nd/asia-northeast3/rank'
 
 export function getRank(index, city, town) {
   if (city && town) {
